@@ -31,7 +31,7 @@ router.render = (req, res) => {
     const headers = res.getHeaders()
     const totalCountHeader = headers['x-total-count'];
     const queryParam = queryString.parse(req._parsedUrl.query);
-    console.log(queryParam);
+
     if (req.method === 'GET' && totalCountHeader) {
         const result = {
             data: res.locals.data,
@@ -47,7 +47,8 @@ router.render = (req, res) => {
 }
 
 // Use default router
+const port = process.env.PORT || 3000;
 server.use("/api", router)
-server.listen(3000, () => {
+server.listen(port, () => {
     console.log('JSON Server is running')
 })
