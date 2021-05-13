@@ -1,0 +1,53 @@
+@baseURL=http://localhost:3000/api
+@resourceName=products 
+
+# @name get
+GET {{baseURL}}/{{resourceName}}
+###
+
+# @name addNew
+POST {{baseURL}}/{{resourceName}}
+Content-Type: application/json
+
+{
+    "name": "Laptop"
+}
+
+################################
+# @name updateNew
+PATCH {{baseURL}}/{{resourceName}}/2
+Content-Type: application/json
+
+{
+    "name": "Laptop new"
+}
+
+################################
+# @name remove
+DELETE  {{baseURL}}/{{resourceName}}/97689
+Content-Type: application/json
+
+
+
+################################
+# @name searchFulText
+GET {{baseURL}}/{{resourceName}}?q=fresh
+
+################################
+# @name like
+GET {{baseURL}}/{{resourceName}}?name_like=Wooden 
+
+
+################################
+# @name Filter
+GET {{baseURL}}/{{resourceName}}?price_gte=800
+
+
+################################
+# @name pagination
+GET {{baseURL}}/{{resourceName}}?_page=1&_limit=10
+
+################################
+# @name sort
+GET {{baseURL}}/{{resourceName}}?_sort=price&_order=asc
+

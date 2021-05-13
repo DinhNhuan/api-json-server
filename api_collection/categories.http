@@ -1,0 +1,28 @@
+@baseURL=http://localhost:3000/api
+@collection=categories 
+
+# @name get
+GET {{baseURL}}/{{collection}}
+###
+
+# @name addNew
+POST {{baseURL}}/{{collection}}
+Content-Type: application/json
+
+{
+    "name": "Laptop"
+}
+
+################################
+# @name updateNew
+PATCH {{baseURL}}/{{collection}}/2
+Content-Type: application/json
+
+{
+    "name": "Laptop new"
+}
+
+################################
+# @name remove
+DELETE  {{baseURL}}/{{collection}}/97689
+Content-Type: application/json
