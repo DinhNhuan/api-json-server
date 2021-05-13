@@ -16,6 +16,7 @@ server.get('/echo', (req, res) => {
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser)
 server.use((req, res, next) => {
+
     if (req.method === 'POST') {
         req.body.createdAt = Date.now();
         req.body.updatedAt = Date.now();
@@ -33,6 +34,7 @@ router.render = (req, res) => {
     const queryParam = queryString.parse(req._parsedUrl.query);
 
     if (req.method === 'GET' && totalCountHeader) {
+
         const result = {
             data: res.locals.data,
             pagination: {
@@ -43,12 +45,14 @@ router.render = (req, res) => {
         }
         return res.jsonp(result);
     }
+    return res.jsonp(res.locals.data)
 
 }
 
 // Use default router
 const port = process.env.PORT || 3000;
+
 server.use("/api", router)
-server.listen(port, () => {
+server.listen(3000, () => {
     console.log('JSON Server is running')
 })
