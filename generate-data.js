@@ -37,6 +37,7 @@ const randomProductList = (categoryList, numberProducts) => {
                 name: faker.commerce.productName(),
                 price: parseFloat(faker.commerce.price(), 10),
                 description: faker.commerce.productDescription(),
+                image: faker.image.image(),
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
             }
