@@ -26,18 +26,18 @@ const randomCategoryList = (n) => {
 const randomProductList = (categoryList, numberProducts) => {
     if (numberProducts <= 0) return [];
     const productList = [];
-    console.log(categoryList);
+    // console.log(categoryList);
     // random data 
     for (const category of categoryList) {
         Array.from(new Array(numberProducts)).forEach(() => {
-            console.log(category)
+            // console.log(category)
             const product = {
                 categoryId: category.id,
                 id: faker.datatype.number(),
                 name: faker.commerce.productName(),
                 price: parseFloat(faker.commerce.price(), 10),
                 description: faker.commerce.productDescription(),
-                image: faker.image.image(),
+                image: `https://picsum.photos/id/${Math.ceil(Math.random()*1000)}/300/300`,
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
             }
@@ -51,8 +51,8 @@ const randomProductList = (categoryList, numberProducts) => {
 // IFFE
 (() => {
     // ramdom data 
-    categoryList = randomCategoryList(4);
-    productList = randomProductList(categoryList, 5);
+    categoryList = randomCategoryList(10);
+    productList = randomProductList(categoryList, 10);
 
     // prepare db object
     const db = {
